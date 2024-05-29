@@ -45,6 +45,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# for java setup
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# for wezterm
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
 ########## BASIC CONFIG ##########
 # History
 HISTSIZE=10000
@@ -86,8 +92,10 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias nv="nvim"
 alias vs="open -a Visual\ Studio\ Code.app"
 alias md="open -a MarkText.app"
+alias ls="exa"
+alias la="exa -a"
 alias ll="exa -l"
-alias la="exa -la"
+alias lla="exa -la"
 alias calendar="open https://calendar.google.com/"
 alias lazy="NVIM_APPNAME=LazyVim nvim"
 alias line="open -a Line"
@@ -111,3 +119,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# bun completions
+[ -s "/Users/tonghaoting/.bun/_bun" ] && source "/Users/tonghaoting/.bun/_bun"

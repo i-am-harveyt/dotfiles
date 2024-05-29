@@ -3,6 +3,8 @@ return {
 	"williamboman/mason.nvim",
 	-- auto complete
 	"hrsh7th/nvim-cmp",
+	-- codeium
+	"Exafunction/codeium.nvim",
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",
 	-- gitsigns
