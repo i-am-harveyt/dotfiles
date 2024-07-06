@@ -2,26 +2,28 @@ local opt = vim.opt
 local cmd = vim.cmd
 local api = vim.api
 
-opt.termguicolors = true
+cmd("colorscheme slate")
+
 opt.background = "dark"
-opt.mouse = "a"
-opt.encoding = "utf-8"
 opt.backup = false
-opt.writebackup = false
+opt.clipboard = "unnamedplus"
+opt.cursorline = true
+opt.encoding = "utf-8"
+opt.guifont = "*"
+opt.mouse = "a"
+-- opt.nu = true
+-- opt.rnu = true
 opt.smarttab = true
-opt.updatetime = 50
-opt.timeoutlen = 50
 opt.showcmd = true
 opt.smartindent = true
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.nu = true
-opt.rnu = true
-opt.clipboard = "unnamedplus"
-opt.guifont = "*"
 opt.swapfile = true
+opt.shiftwidth = 2
+opt.timeoutlen = 50
+opt.tabstop = 2
+opt.termguicolors = true
+opt.updatetime = 50
 opt.wrap = false
-cmd("colorscheme slate")
+opt.writebackup = false
 
 vim.keymap.set("i", "<c-l>", "<ESC>")
 

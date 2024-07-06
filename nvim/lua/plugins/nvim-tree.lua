@@ -23,19 +23,31 @@ end
 local config = function()
 	local nt = require("nvim-tree")
 	nt.setup({
-		on_attach = on_attach,
-		update_focused_file = {
+		diagnostics = {
 			enable = true,
+			show_on_dirs = true,
 		},
 		git = {
 			enable = true,
 			show_on_dirs = true,
 			timeout = 200,
 		},
-		diagnostics = {
+		on_attach = on_attach,
+		update_focused_file = {
 			enable = true,
-			show_on_dirs = true,
 		},
+		renderer = {
+      group_empty = true,
+			icons = {
+        show = {
+          file = true,
+          folder = false,
+          folder_arrow = false,
+          git = true,
+          modified = true,
+        },
+      },
+    },
 		view = {
 			side = "right",
 			-- number = true,

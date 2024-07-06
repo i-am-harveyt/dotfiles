@@ -29,9 +29,6 @@ export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 # evoke pdflatex
 export PATH=$PATH:/Library/TeX/texbin
 
-# evoke python3.9 path
-export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.9/bin
-
 # pyenv-virtualenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
@@ -49,7 +46,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # for wezterm
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH=$PATH:/Applications/WezTerm.app/Contents/MacOS
 
 ########## BASIC CONFIG ##########
 # History
@@ -103,6 +100,13 @@ alias brave="open -a Brave\ Browser"
 alias arc="open -a Arc"
 alias mail="open -a Thunderbird"
 alias obs="open -a Obsidian.app"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gp="git push"
+alias gpo="git push origin"
+alias gb="git branch"
+alias c="clear"
 
 ########## Run on open ##########
 run_on_open() {

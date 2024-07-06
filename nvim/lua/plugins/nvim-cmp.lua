@@ -1,63 +1,27 @@
-local kind_icons = {
-	Text = "",
-	Method = "󰆧",
-	Function = "󰊕",
-	Constructor = "",
-	Field = "󰇽",
-	Variable = "󰂡",
-	Class = "󰠱",
-	Interface = "",
-	Module = "",
-	Property = "󰜢",
-	Unit = "",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "󰌋",
-	Snippet = "",
-	Color = "󰏘",
-	File = "󰈙",
-	Reference = "",
-	Folder = "󰉋",
-	EnumMember = "",
-	Constant = "󰏿",
-	Struct = "",
-	Event = "",
-	Operator = "󰆕",
-	TypeParameter = "󰅲",
-}
+local format_func = function(entry, vim_item)
+	local kind = require("lspkind").cmp_format({
+		mode = "symbol_text",
+		maxwidth = 50,
+		ellipsis_char = "...",
+		symbol_map = { Codeium = "" },
+	})(entry, vim_item)
+	local strings = vim.split(kind.kind, "%s", { trimempty = true })
+	kind.kind = " " .. (strings[1] or "") .. " "
+	kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+	return kind
+end
 
 local config = function()
-	local cmp_ok, cmp = pcall(require, "cmp")
-	if not cmp_ok then
-		print("CMP not ok")
-		return
-	end
-	local ls_ok, ls = pcall(require, "luasnip")
-	if not ls_ok then
-		print("luasnip not ok")
-		return
-	end
+	local cmp = require("cmp")
+	local ls = require("luasnip")
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	cmp.setup({
-		experimental = {
-			ghost_text = { hl_group = "Comment" },
-		},
+		experimental = { ghost_text = { hl_group = "Comment" } },
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({
-					mode = "symbol_text",
-					maxwidth = 50,
-					ellipsis_char = "...",
-					symbol_map = { Codeium = "" },
-				})(entry, vim_item)
-				local strings = vim.split(kind.kind, "%s", { trimempty = true })
-				kind.kind = " " .. (strings[1] or "") .. " "
-				kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-				return kind
-			end,
+			format = format_func,
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-u>"] = cmp.mapping.scroll_docs(-1),
@@ -86,7 +50,7 @@ local config = function()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { "i" }),
 
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if ls.locally_jumpable(-1) then
@@ -94,7 +58,7 @@ local config = function()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { "i" }),
 		}),
 		snippet = {
 			expand = function(args)
@@ -104,7 +68,7 @@ local config = function()
 		sources = cmp.config.sources({
 			{ name = "codeium" },
 			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
+			-- { name = "luasnip" },
 			{ name = "buffer" },
 		}),
 		window = {

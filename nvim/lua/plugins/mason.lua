@@ -15,6 +15,18 @@ local config = function()
 			})
 		end,
 	})
+
+	-- for lua
+	lsp_config.lua_ls.setup({
+		capabilities = capabilities,
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	})
 end
 
 local ok, wk = pcall(require, "which-key")
