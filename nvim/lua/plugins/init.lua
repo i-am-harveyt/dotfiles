@@ -5,8 +5,6 @@ return {
 	"hrsh7th/nvim-cmp",
 	-- codeium
 	"Exafunction/codeium.nvim",
-	-- treesitter
-	-- "nvim-treesitter/nvim-treesitter",
 	-- gitsigns
 	"lewis6991/gitsigns.nvim",
 	-- telescope
@@ -31,8 +29,6 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	-- diagnostics
-	"folke/trouble.nvim",
 	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",
@@ -49,60 +45,11 @@ return {
 	-- UI --
 	-- nvimtree
 	"nvim-tree/nvim-tree.lua",
-	-- statusline
-	"nvim-lualine/lualine.nvim",
-	-- bufferline
-	"akinsho/bufferline.nvim",
-
-	-- noice.nvim
-	-- "folke/noice.nvim",
 
 	-- lspsaga
 	"glepnir/lspsaga.nvim",
 	-- indent line
 	"lukas-reineke/indent-blankline.nvim",
-	-- colorizer
-	{
-		"norcalli/nvim-colorizer.lua",
-		event = "BufRead",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
 	-- hop
-	{
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			local hop = require("hop")
-			hop.setup({ keys = "0123456789" })
-			local directions = require("hop.hint").HintDirection
-			vim.keymap.set("", "f", function()
-				hop.hint_char1({
-					direction = directions.AFTER_CURSOR,
-					current_line_only = true,
-				})
-			end, { remap = true })
-			vim.keymap.set("", "F", function()
-				hop.hint_char1({
-					direction = directions.BEFORE_CURSOR,
-					current_line_only = true,
-				})
-			end, { remap = true })
-			vim.keymap.set("", "t", function()
-				hop.hint_char1({
-					direction = directions.AFTER_CURSOR,
-					current_line_only = true,
-					hint_offset = -1,
-				})
-			end, { remap = true })
-			vim.keymap.set("", "T", function()
-				hop.hint_char1({
-					direction = directions.BEFORE_CURSOR,
-					current_line_only = true,
-					hint_offset = 1,
-				})
-			end, { remap = true })
-		end,
-	},
+	"phaazon/hop.nvim",
 }

@@ -10,6 +10,7 @@ opt.clipboard = "unnamedplus"
 opt.cursorline = true
 opt.encoding = "utf-8"
 opt.guifont = "*"
+opt.laststatus = 0 -- remove status line
 opt.mouse = "a"
 -- opt.nu = true
 -- opt.rnu = true
