@@ -2,15 +2,14 @@ local config = function()
 	require("telescope").setup()
 end
 
-local wk = require("which-key")
-wk.add({
+require("which-key").add({
 	{
-		{ "<Space>F", group = "Find" },
+		{ "<Space>F",  group = "Find" },
 		{ "<Space>Ff", "<Cmd>Telescope find_files<CR>", desc = "file" },
-		{ "<Space>Fw", "<Cmd>Telescope live_grep<CR>", desc = "word" },
-		{ "<Space>b", group = "buffer" },
-		{ "<Space>bb", "<Cmd>Telescope buffers<CR>", desc = "buffers" },
-		{ "<Space>f", group = "file" },
+		{ "<Space>Fw", "<Cmd>Telescope live_grep<CR>",  desc = "word" },
+		{ "<Space>b",  group = "buffer" },
+		{ "<Space>bb", "<Cmd>Telescope buffers<CR>",    desc = "buffers" },
+		{ "<Space>f",  group = "file" },
 		{ "<Space>ff", "<Cmd>Telescope find_files<CR>", desc = "find" },
 	},
 })
