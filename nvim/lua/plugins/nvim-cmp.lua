@@ -15,7 +15,6 @@ end
 local config = function()
 	local cmp = require("cmp")
 	local ls = require("luasnip")
-	require("luasnip.loaders.from_vscode").lazy_load()
 
 	cmp.setup({
 		experimental = { ghost_text = { hl_group = "Comment" } },
@@ -68,7 +67,6 @@ local config = function()
 		sources = cmp.config.sources({
 			{ name = "codeium" },
 			{ name = "nvim_lsp" },
-			-- { name = "luasnip" },
 			{ name = "buffer" },
 		}),
 		window = {

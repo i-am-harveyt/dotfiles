@@ -1,7 +1,7 @@
 local config = function()
 	vim.opt.timeout = true
 	vim.opt.timeoutlen = 300
-	local wk = require('which-key')
+	local wk = require("which-key")
 	wk.setup({
 		layout = {
 			height = { min = 4, max = 25 },
@@ -12,36 +12,34 @@ local config = function()
 	})
 
 	-- for basic keybindings setup
-	wk.register({
-			Q = { "<Cmd>q!<CR>", "Quit" },
-			b = {
-				name = "+buffer",
-				n = { "<Cmd>bn<CR>", "Next" },
-				p = { "<Cmd>bp<CR>", "Previous" },
-				d = { "<Cmd>bd<CR>", "Delete" },
-			},
-			f = {
-				name = "+file",
-				s = { "<Cmd>w<CR>", "Save" },
-				S = { "<Cmd>lua vim.lsp.buf.format{aync=true}<CR><Cmd>w<CR>", "Format & Save" },
-			},
-			w = {
-				name = "+window",
-				s = {
-					name = "+split",
-					h = { "<Cmd>split<CR>", "horizontally" },
-					v = { "<Cmd>vsplit<CR>", "vertically" },
-				},
-				h = { "<C-w>h", "Move left" },
-				j = { "<C-w>j", "Move down" },
-				k = { "<C-w>k", "Move up" },
-				l = { "<C-w>l", "Move right" },
-			},
+	wk.add({
+		{
+			{ "<Space>Q",   "<Cmd>q!<CR>",                                          desc = "Quit" },
+			{ "<Space>b",   group = "buffer" },
+			{ "<Space>bd",  "<Cmd>bd<CR>",                                          desc = "Delete" },
+			{ "<Space>bn",  "<Cmd>bn<CR>",                                          desc = "Next" },
+			{ "<Space>bp",  "<Cmd>bp<CR>",                                          desc = "Previous" },
+			{ "<Space>f",   group = "file" },
+			{ "<Space>fS",  "<Cmd>lua vim.lsp.buf.format{aync=true}<CR><Cmd>w<CR>", desc = "Format & Save" },
+			{ "<Space>fs",  "<Cmd>w<CR>",                                           desc = "Save" },
+			{ "<Space>w",   group = "window" },
+			{ "<Space>wh",  "<C-w>h",                                               desc = "Move left" },
+			{ "<Space>wj",  "<C-w>j",                                               desc = "Move down" },
+			{ "<Space>wk",  "<C-w>k",                                               desc = "Move up" },
+			{ "<Space>wl",  "<C-w>l",                                               desc = "Move right" },
+			{ "<Space>ws",  group = "split" },
+			{ "<Space>wsh", "<Cmd>split<CR>",                                       desc = "horizontally" },
+			{ "<Space>wsv", "<Cmd>vsplit<CR>",                                      desc = "vertically" },
 		},
-		{ prefix = "<Space>" })
+	})
 end
 
 return {
 	"folke/which-key.nvim",
-	config = config
+	opts = {
+		icons = {
+			mappings = false,
+		}
+	}
+	config = config,
 }
