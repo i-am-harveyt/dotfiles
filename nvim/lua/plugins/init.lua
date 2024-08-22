@@ -1,11 +1,17 @@
 return {
+	{
+		"creativenull/efmls-configs-nvim",
+		-- version = 'v1.x.x', -- version is optional, but recommended
+		event = "InsertEnter",
+		dependencies = { "neovim/nvim-lspconfig" },
+	},
 	"williamboman/mason.nvim",
 	"hrsh7th/nvim-cmp",
 	"Exafunction/codeium.nvim",
 	"lewis6991/gitsigns.nvim",
 	"nvim-telescope/telescope.nvim",
 	"folke/which-key.nvim",
-	"jose-elias-alvarez/null-ls.nvim",
+	-- "nvimtools/none-ls.nvim",
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",

@@ -4,15 +4,17 @@ local config = function()
 		ensure_installed = { "lua" },
 		sync_install = false,
 		auto_install = true,
-		highlight = { enable = false },
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false,
+		},
 		incremental_selection = { enable = true },
 		indent = { enable = true },
 	})
 end
 
--- return {
--- 	"nvim-treesitter/nvim-treesitter",
--- 	event = "BufRead",
--- 	config = config,
--- }
-return {}
+return {
+	"nvim-treesitter/nvim-treesitter",
+	event = "BufRead",
+	config = config,
+}

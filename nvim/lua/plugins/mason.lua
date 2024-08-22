@@ -16,35 +16,45 @@ local config = function()
 		end,
 	})
 
-	-- for lua
-	lsp_config.lua_ls.setup({
+	-- for efm (linter & formatter)
+	local black = require("efmls-configs.formatters.black")
+	local isort = require("efmls-configs.formatters.isort")
+	local flake8 = require("efmls-configs.linters.flake8")
+	local pylint = require("efmls-configs.linters.pylint")
+	local stylua = require("efmls-configs.formatters.stylua")
+	local lang = {
+		python = { black, isort, flake8, pylint },
+		lua = { stylua },
+	}
+	lsp_config.efm.setup({
 		capabilities = capabilities,
+		init_options = {
+			documentFormatting = true,
+			documentRangeFormatting = true,
+		},
 		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-			},
+			rootMarkers = { ".git/" },
+			languages = lang,
 		},
 	})
 end
 
 require("which-key").add({
 	{
-		{ "<Space>l", group = "LSP" },
-		{ "<Space>lD", "<cmd>Telescope diagnostics<cr>", desc = "Document Diagnostics" },
-		{ "<Space>lI", "<cmd>Mason<cr>", desc = "Installer Info" },
-		{ "<Space>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-		{ "<Space>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Definition" },
+		{ "<Space>l",  group = "LSP" },
+		{ "<Space>lD", "<cmd>Telescope diagnostics<cr>",                   desc = "Document Diagnostics" },
+		{ "<Space>lI", "<cmd>Mason<cr>",                                   desc = "Installer Info" },
+		{ "<Space>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",           desc = "Code Action" },
+		{ "<Space>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>",            desc = "Definition" },
 		{ "<Space>lf", "<Cmd>lua vim.lsp.buf.format { async = true }<CR>", desc = "Format" },
-		{ "<Space>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover" },
-		{ "<Space>li", "<cmd>LspInfo<cr>", desc = "Info" },
-		{ "<Space>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-		{ "<Space>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
-		{ "<Space>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-		{ "<Space>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
-		{ "<Space>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-		{ "<Space>lw", "<cmd>Telescope lsp_workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
+		{ "<Space>lh", "<Cmd>lua vim.lsp.buf.hover()<CR>",                 desc = "hover" },
+		{ "<Space>li", "<cmd>LspInfo<cr>",                                 desc = "Info" },
+		{ "<Space>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",      desc = "Next Diagnostic" },
+		{ "<Space>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",      desc = "Prev Diagnostic" },
+		{ "<Space>ll", "<cmd>lua vim.lsp.codelens.run()<cr>",              desc = "CodeLens Action" },
+		{ "<Space>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",    desc = "Quickfix" },
+		{ "<Space>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",                desc = "Rename" },
+		{ "<Space>lw", "<cmd>Telescope lsp_workspace_diagnostics<cr>",     desc = "Workspace Diagnostics" },
 	},
 })
 

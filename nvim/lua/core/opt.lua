@@ -2,7 +2,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 local api = vim.api
 
-cmd("colorscheme slate")
+cmd("colorscheme retrobox")
 
 opt.background = "dark"
 opt.backup = false
@@ -12,16 +12,16 @@ opt.encoding = "utf-8"
 opt.guifont = "*"
 opt.laststatus = 0 -- remove status line
 opt.mouse = "a"
--- opt.nu = true
+opt.nu = true
 -- opt.rnu = true
 opt.smarttab = true
 opt.showcmd = true
 opt.smartindent = true
-opt.shiftwidth = 2
+opt.shiftwidth = 4
 opt.signcolumn = "yes:1"
 opt.swapfile = true
 opt.timeoutlen = 50
-opt.tabstop = 2
+opt.tabstop = 4
 opt.termguicolors = true
 opt.updatetime = 50
 opt.wrap = false
