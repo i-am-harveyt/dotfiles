@@ -2,7 +2,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 local api = vim.api
 
-cmd("colorscheme retrobox")
+cmd("colorscheme sorbet")
 
 opt.background = "dark"
 opt.backup = false
@@ -13,7 +13,7 @@ opt.guifont = "*"
 opt.laststatus = 0 -- remove status line
 opt.mouse = "a"
 opt.nu = true
--- opt.rnu = true
+opt.rnu = true
 opt.smarttab = true
 opt.showcmd = true
 opt.smartindent = true
@@ -26,6 +26,8 @@ opt.termguicolors = true
 opt.updatetime = 50
 opt.wrap = false
 opt.writebackup = false
+opt.timeout = true
+opt.timeoutlen = 300
 
 vim.keymap.set("i", "<c-l>", "<ESC>")
 

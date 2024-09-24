@@ -1,46 +1,45 @@
 return {
 	{
-		"creativenull/efmls-configs-nvim",
-		-- version = 'v1.x.x', -- version is optional, but recommended
-		event = "InsertEnter",
-		dependencies = { "neovim/nvim-lspconfig" },
-	},
-	"williamboman/mason.nvim",
-	"hrsh7th/nvim-cmp",
-	"Exafunction/codeium.nvim",
-	"lewis6991/gitsigns.nvim",
-	"nvim-telescope/telescope.nvim",
-	"folke/which-key.nvim",
-	-- "nvimtools/none-ls.nvim",
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		"folke/which-key.nvim",
 		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-	{
-		"numToStr/Comment.nvim",
-		event = "BufRead",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		ft = "markdown",
-		config = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
-	-- {
-	-- 	"m4xshen/hardtime.nvim",
-	-- 	opts = {}
-	-- },
+			local wk = require("which-key")
+			wk.setup({
+				preset = "modern",
+				layout = {
+					height = { min = 4 },
+					width = { min = 20 },
+					spacing = 3,
+				},
+				icons = { mappings = false },
+				sort = { "case", "alphanum" }
+			})
+			wk.add({
+				{
+					{ "<Space>Q",   "<Cmd>q!<CR>",     desc = "Quit" },
 
-	-- UI --
-	"nvim-tree/nvim-tree.lua",
-	"glepnir/lspsaga.nvim",
-	"lukas-reineke/indent-blankline.nvim",
-	"phaazon/hop.nvim",
+					{ "<Space>b",   group = "buffer",  desc = "buffer" },
+					{ "<Space>bd",  "<Cmd>bd<CR>",     desc = "Delete" },
+					{ "<Space>bn",  "<Cmd>bn<CR>",     desc = "Next" },
+					{ "<Space>bp",  "<Cmd>bp<CR>",     desc = "Previous" },
+
+					{ "<Space>f",   group = "file" },
+					{ "<Space>fs",  "<Cmd>w<CR>",      desc = "Save" },
+
+					{ "<Space>w",   group = "window" },
+					{ "<Space>wh",  "<C-w>h",          desc = "Move left" },
+					{ "<Space>wj",  "<C-w>j",          desc = "Move down" },
+					{ "<Space>wk",  "<C-w>k",          desc = "Move up" },
+					{ "<Space>wl",  "<C-w>l",          desc = "Move right" },
+
+					{ "<Space>ws",  group = "split" },
+					{ "<Space>wsh", "<Cmd>split<CR>",  desc = "horizontally" },
+					{ "<Space>wsv", "<Cmd>vsplit<CR>", desc = "vertically" },
+				},
+			})
+		end,
+	},
 }
+-- {
+-- 	"m4xshen/hardtime.nvim",
+-- 	opts = {}
+-- },

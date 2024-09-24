@@ -48,6 +48,25 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # for wezterm
 export PATH=$PATH:/Applications/WezTerm.app/Contents/MacOS
 
+# for flutter
+export PATH=$PATH:/Users/tonghaoting/flutter/bin
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+
+# for yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# for fzf
+source <(fzf --zsh)
+
 ########## BASIC CONFIG ##########
 # History
 HISTSIZE=10000
@@ -88,31 +107,19 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Establishing custom commands below
 alias nv="nvim"
 alias vs="open -a Visual\ Studio\ Code.app"
-alias md="open -a MarkText.app"
-alias ls="exa"
-alias la="exa -a"
-alias ll="exa -l"
-alias lla="exa -la"
 alias calendar="open https://calendar.google.com/"
 alias lazy="NVIM_APPNAME=LazyVim nvim"
 alias line="open -a Line"
 alias brave="open -a Brave\ Browser"
 alias arc="open -a Arc"
-alias mail="open -a Thunderbird"
 alias obs="open -a Obsidian.app"
-alias ga="git add"
-alias gc="git commit"
-alias gcm="git commit -m"
-alias gp="git push"
-alias gpo="git push origin"
-alias gb="git branch"
-alias c="clear"
+alias ls="eza"
+alias ll="eza -l"
+alias la="eza -a"
+alias lla="eza -la"
+alias lt="eza -T"
 
 ########## Run on open ##########
-run_on_open() {
-	neofetch
-}
-# run_on_open
 
 # export PATH="/Users/tonghaoting/.detaspace/bin:$PATH"
 
