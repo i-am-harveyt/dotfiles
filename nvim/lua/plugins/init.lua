@@ -34,6 +34,8 @@ return {
 					{ "<Space>ws",  group = "split" },
 					{ "<Space>wsh", "<Cmd>split<CR>",  desc = "horizontally" },
 					{ "<Space>wsv", "<Cmd>vsplit<CR>", desc = "vertically" },
+
+					{ "<Space>O", "<Cmd>Oil<CR>",  desc = "Oil" },
 				},
 			})
 		end,

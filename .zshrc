@@ -133,3 +133,6 @@ esac
 
 # bun completions
 [ -s "/Users/tonghaoting/.bun/_bun" ] && source "/Users/tonghaoting/.bun/_bun"
+
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/tonghaoting/.zsh/completions:"* ]]; then export FPATH="/Users/tonghaoting/.zsh/completions:$FPATH"; fi
