@@ -17,12 +17,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/go/
 export PATH=$PATH:/usr/local/Golang/bin
 
-# For JSP setup
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
-export PATH=$PATH:$JAVA_HOME/bin
-export CLASSPATH=$CLASSPATH:/Library/Tomcat_10/lib/servlet-api.jar
-export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
-
 # For llvm setup
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 
@@ -77,6 +71,13 @@ HISTFILE=~/.zsh_history
 EDITOR=nvim
 
 # completion
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -87,24 +88,7 @@ _comp_options+=(globdots)
 bindkey -v
 export KEYTIMEOUT=1
 
-# # version control
-# autoload -Uz vcs_info
-# precmd() { vcs_info }
-# setopt PROMPT_SUBST
-#
-# # customize Prompt
-# PROMPT='[%F{blue}%n%F{yellow}:%3~%F{white}]
-# %F{white}%# '
-# RPROMPT="%F{red}${vcs_info_msg_0_} %F{cyan}[%*]"
-
-########## plugins ##########
-eval "$(starship init zsh)"
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
 ########## Alias ##########
-# Establishing custom commands below
 alias nv="nvim"
 alias vs="open -a Visual\ Studio\ Code.app"
 alias calendar="open https://calendar.google.com/"
@@ -119,9 +103,10 @@ alias la="eza -a"
 alias lla="eza -la"
 alias lt="eza -T"
 
-########## Run on open ##########
-
-# export PATH="/Users/tonghaoting/.detaspace/bin:$PATH"
+########## plugins ##########
+eval "$(starship init zsh)"
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # pnpm
 export PNPM_HOME="/Users/tonghaoting/Library/pnpm"

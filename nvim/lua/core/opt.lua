@@ -1,8 +1,6 @@
 local opt = vim.opt
-local cmd = vim.cmd
 local api = vim.api
 
-cmd("colorscheme sorbet")
 
 opt.background = "dark"
 opt.backup = false
@@ -28,6 +26,8 @@ opt.wrap = false
 opt.writebackup = false
 opt.timeout = true
 opt.timeoutlen = 300
+
+vim.cmd("colorscheme retrobox")
 
 vim.keymap.set("i", "<c-l>", "<ESC>")
 
