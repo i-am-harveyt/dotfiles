@@ -35,12 +35,27 @@ return {
 				end,
 			})
 
-			-- for deno
-			lsp_config.denols.setup({ root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc") })
-			lsp_config.ts_ls.setup({
-				root_dir = lsp_config.util.root_pattern("package.json"),
-				single_file_support = false,
+			lsp_config.pyright.setup({
+				settings = {
+					pyright = {
+						-- Using Ruff's import organizer
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							-- Ignore all files for analysis to exclusively use Ruff for linting
+							ignore = { "*" },
+						},
+					},
+				},
 			})
+
+			-- for deno
+			-- lsp_config.denols.setup({ root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc") })
+			-- lsp_config.ts_ls.setup({
+			-- 	root_dir = lsp_config.util.root_pattern("package.json"),
+			-- 	single_file_support = false,
+			-- })
 
 			require("which-key").add({
 				{
@@ -60,15 +75,17 @@ return {
 					c = { "clang-format" },
 					cpp = { "clang-format" },
 					lua = { "stylua" },
-					python = { "isort", "black" },
+					python = { "ruff" },
 					go = { "gofumpt", "goimports" },
 					javascript = { "prettier" },
 					typescript = { "prettier" },
+					markdown = { "prettier" },
 				},
 			})
 			conform.formatters["clang-format"] = {
 				prepend_args = { "-style", "Microsoft" },
 			}
+			conform.formatters["ruff"] = { command = "ruff format" }
 			require("which-key").add({
 				{
 					{
@@ -91,7 +108,8 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				python = { "pylint", "flake8" },
+				python = { "ruff" },
+				go = { "golangcilint" },
 			}
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()

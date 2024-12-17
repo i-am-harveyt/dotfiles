@@ -13,6 +13,6 @@ config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
 -- coloerscheme
-config.color_scheme = "Gruvbox dark, hard (base16)"
+config.color_scheme = "Kanagawa (Gogh)"
 
 return config

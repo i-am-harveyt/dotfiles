@@ -1,4 +1,17 @@
 return {
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("kanagawa").setup({
+				theme = "wave", -- vim.o.background = ""
+				background = {
+					dark = "wave", -- vim.o.background = "dark"
+					light = "lotus", -- vim.o.background = "light"
+				},
+			})
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
 	"lewis6991/gitsigns.nvim",
 	{
 		"nvim-tree/nvim-tree.lua",

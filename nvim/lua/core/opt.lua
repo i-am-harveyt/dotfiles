@@ -16,10 +16,10 @@ opt.smarttab = true
 opt.showcmd = true
 opt.smartindent = true
 opt.shiftwidth = 4
+opt.tabstop = 4
 opt.signcolumn = "yes:1"
 opt.swapfile = true
 opt.timeoutlen = 50
-opt.tabstop = 4
 opt.termguicolors = true
 opt.updatetime = 50
 opt.wrap = false
@@ -27,12 +27,12 @@ opt.writebackup = false
 opt.timeout = true
 opt.timeoutlen = 300
 
-vim.cmd("colorscheme retrobox")
+-- vim.cmd("colorscheme sorbet")
 
 vim.keymap.set("i", "<c-l>", "<ESC>")
 
 -- Customization for Pmenu
-api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
-api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
+-- api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
+-- api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
 
 return {}
