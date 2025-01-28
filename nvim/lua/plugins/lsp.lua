@@ -51,11 +51,13 @@ return {
 			})
 
 			-- for deno
-			-- lsp_config.denols.setup({ root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc") })
-			-- lsp_config.ts_ls.setup({
-			-- 	root_dir = lsp_config.util.root_pattern("package.json"),
-			-- 	single_file_support = false,
-			-- })
+			lsp_config.denols.setup({
+				root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+			lsp_config.ts_ls.setup({
+				root_dir = lsp_config.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
 
 			require("which-key").add({
 				{
@@ -70,6 +72,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local conform = require("conform")
+			local util = require("conform.util")
 			conform.setup({
 				formatters_by_ft = {
 					c = { "clang-format" },
@@ -86,6 +89,15 @@ return {
 				prepend_args = { "-style", "Microsoft" },
 			}
 			conform.formatters["ruff"] = { command = "ruff format" }
+			conform.formatters["prettier"] = {
+				cwd = util.root_file({ "package.json" }),
+				require_cwd = true,
+			}
+			conform.formatters["denols"] = {
+				cwd = util.root_file({ "deno.json", "deno.jsonc" }),
+				command = "deno fmt",
+				require_cwd = true,
+			}
 			require("which-key").add({
 				{
 					{
