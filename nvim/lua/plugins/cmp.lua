@@ -16,6 +16,7 @@ return {
 			},
 			cmdline = {
 				keymap = {
+					preset = "default",
 					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
 			},
