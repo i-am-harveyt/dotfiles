@@ -1,40 +1,25 @@
-require("which-key").add({
-	{
-		{ "<Space>l", group = "LSP" },
-		{ "<Space>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action" },
-		{ "<Space>ld", "<CMD>lua vim.lsp.buf.definition()<CR>", desc = "Definition" },
-		{ "<Space>lh", "<CMD>lua vim.lsp.buf.hover()<CR>", desc = "hover" },
-		{ "<Space>lj", "<CMD>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-		{ "<Space>lk", "<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
-		{ "<Space>ll", "<CMD>lua vim.lsp.codelens.run()<CR>", desc = "CodeLens Action" },
-		{ "<Space>lq", "<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>", desc = "Quickfix" },
-		{ "<Space>lr", "<CMD>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
-	},
-})
-
 return {
 	{
 		"williamboman/mason.nvim",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+			"saghen/blink.cmp",
 		},
 		config = function()
-			local mason = require("mason")
-			mason.setup()
-			local mason_config = require("mason-lspconfig")
+			require("mason").setup()
 			local lsp_config = require("lspconfig")
 
-			-- cmp_nvim_lsp
-			local cmp = require("cmp_nvim_lsp")
-			local capabilities = cmp.default_capabilities()
+			-- blink-cmp
+			local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			mason_config.setup_handlers({
+			require("mason-lspconfig").setup_handlers({
 				function(server_name)
-					lsp_config[server_name].setup({ capabilities = capabilities })
+					lsp_config[server_name].setup({ capabilities = blink_capabilities })
 				end,
 			})
 
+			-- for pyright
 			lsp_config.pyright.setup({
 				settings = {
 					pyright = {
