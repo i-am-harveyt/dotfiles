@@ -1,12 +1,3 @@
--- return {
--- 	dir = "~/Documents/Programming/Lua/feedback.nvim/",
--- 	config = function()
--- 		require("feedback").setup({
--- 			flash_time = 150, -- 閃爍持續時間（毫秒）
--- 			color = "#eaeded", -- 閃爍顏色（淺綠色）
--- 		})
--- 	end,
--- }
 return {
 	{
 		"glepnir/lspsaga.nvim",
