@@ -19,6 +19,17 @@ return {
 				end,
 			})
 
+			-- for lua ls
+			lsp_config.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			})
+
 			-- for pyright
 			lsp_config.pyright.setup({
 				settings = {
@@ -121,5 +132,16 @@ return {
 		config = function()
 			require("Comment").setup()
 		end,
+	},
+	{ -- work for neovim
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 }

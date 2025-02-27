@@ -5,6 +5,7 @@ return {
 			local wk = require("which-key")
 			wk.setup({
 				preset = "modern",
+				delay = 0,
 				layout = {
 					height = { min = 4 },
 					width = { min = 20 },
