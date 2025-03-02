@@ -55,12 +55,8 @@ return {
 				single_file_support = false,
 			})
 
-			require("which-key").add({
-				{
-					{ "<Space>lI", "<CMD>Mason<CR>", desc = "Installer Info" },
-					{ "<Space>li", "<CMD>LspInfo<CR>", desc = "Info" },
-				},
-			})
+			vim.keymap.set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "Installer Info" })
+			vim.keymap.set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "Info" })
 		end,
 	},
 	{
@@ -94,20 +90,12 @@ return {
 				command = "deno fmt",
 				require_cwd = true,
 			}
-			require("which-key").add({
-				{
-					{
-						"<Space>lf",
-						function()
-							conform.format({
-								async = true,
-								lsp_format = "fallback",
-							})
-						end,
-						desc = "Format",
-					},
-				},
-			})
+			vim.keymap.set("n", "<Space>lf", function()
+				conform.format({
+					async = true,
+					lsp_format = "fallback",
+				})
+			end, { desc = "Format" })
 		end,
 	},
 	{

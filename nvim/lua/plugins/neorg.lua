@@ -17,11 +17,7 @@ return {
 					},
 				},
 			})
-			require("which-key").add({
-				{
-					{ "<Space>N", ":Neorg<CR>", desc = "neorg" },
-				},
-			})
+			vim.keymap.set("n", "<Space>N", ":Neorg<CR>", { desc = "neorg" })
 		end,
 	},
 }

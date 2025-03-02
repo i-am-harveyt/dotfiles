@@ -5,23 +5,24 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lspsaga").setup({ ui = { code_action = "" } })
+			local set = vim.keymap.set
+			set("n", "<Space>ca", "<Cmd>Lspsaga code_action<CR>", { desc = "action" })
+			set("n", "<Space>cd", "<Cmd>Lspsaga peek_definition<CR>", { desc = "definition" })
+			set("n", "<Space>cf", "<Cmd>Lspsaga lsp_finder<CR>", { desc = "find" })
+			set("n", "<Space>ch", "<Cmd>Lspsaga hover_doc<CR>", { desc = "hover" })
+			set("n", "<Space>ci", "<Cmd>Lspsaga finder imp<CR>", { desc = "implementation" })
+			set("n", "<Space>cj", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "next_diagnostics" })
+			set("n", "<Space>ck", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "prev_diagnostics" })
+			set("n", "<Space>co", "<Cmd>Lspsaga outline<CR>", { desc = "outline" })
+			set("n", "<Space>cr", "<Cmd>Lspsaga rename<CR>", { desc = "rename" })
+			set("n", "<Space>dc", "<Cmd>Lspsaga show_cursor_diagnostics<Cr>", { desc = "cursor" })
+			set("n", "<Space>dl", "<Cmd>Lspsaga show_line_diagnostics<Cr>", { desc = "line" })
+			set("n", "<Space>h", "<Cmd>Lspsaga hover_doc<CR>", { desc = "hover" })
+			set("n", "<Space>t", "<Cmd>Lspsaga term_toggle<CR>", { desc = "terminal" })
 			require("which-key").add({
 				{
-					{ "<Space>c",  group = "code" },
-					{ "<Space>ca", "<Cmd>Lspsaga code_action<CR>",             desc = "action" },
-					{ "<Space>cd", "<Cmd>Lspsaga peek_definition<CR>",         desc = "definition" },
-					{ "<Space>cf", "<Cmd>Lspsaga lsp_finder<CR>",              desc = "find" },
-					{ "<Space>ch", "<Cmd>Lspsaga hover_doc<CR>",               desc = "hover" },
-					{ "<Space>ci", "<Cmd>Lspsaga finder imp<CR>",              desc = "implementation" },
-					{ "<Space>cj", "<Cmd>Lspsaga diagnostic_jump_next<CR>",    desc = "next_diagnostics" },
-					{ "<Space>ck", "<Cmd>Lspsaga diagnostic_jump_prev<CR>",    desc = "prev_diagnostics" },
-					{ "<Space>co", "<Cmd>Lspsaga outline<CR>",                 desc = "outline" },
-					{ "<Space>cr", "<Cmd>Lspsaga rename<CR>",                  desc = "rename" },
-					{ "<Space>d",  group = "diagnostics" },
-					{ "<Space>dc", "<Cmd>Lspsaga show_cursor_diagnostics<Cr>", desc = "cursor" },
-					{ "<Space>dl", "<Cmd>Lspsaga show_line_diagnostics<Cr>",   desc = "line" },
-					{ "<Space>h",  "<Cmd>Lspsaga hover_doc<CR>",               desc = "hover" },
-					{ "<Space>t",  "<Cmd>Lspsaga term_toggle<CR>",             desc = "terminal" },
+					{ "<Space>c", group = "code" },
+					{ "<Space>d", group = "diagnostics" },
 				},
 			})
 		end,
