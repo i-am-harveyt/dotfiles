@@ -5,7 +5,7 @@ return {
 			local wk = require("which-key")
 			local opts = {
 				preset = "modern",
-				delay = 0,
+				delay = 200,
 				layout = {
 					height = { min = 4 },
 					width = { min = 20 },
@@ -13,6 +13,11 @@ return {
 				},
 				icons = { mappings = false },
 				sort = { "alphanum", "case" },
+				win = {
+					wo = {
+						winblend = 10
+					}
+				}
 			}
 			wk.setup(opts)
 			wk.add({

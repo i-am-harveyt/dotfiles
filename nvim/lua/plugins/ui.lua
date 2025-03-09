@@ -1,17 +1,4 @@
 return {
-	{
-		"rebelot/kanagawa.nvim",
-		config = function()
-			require("kanagawa").setup({
-				theme = "wave", -- vim.o.background = ""
-				background = {
-					dark = "wave", -- vim.o.background = "dark"
-					light = "lotus", -- vim.o.background = "light"
-				},
-			})
-			vim.cmd("colorscheme kanagawa")
-		end,
-	},
 	"lewis6991/gitsigns.nvim",
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -35,10 +22,11 @@ return {
 						}
 					end
 					api.config.mappings.default_on_attach(bufnr)
-					vim.keymap.set("n", "c", api.tree.change_root_to_node, opts("CD")) -- change dir
-					vim.keymap.set("n", "N", api.fs.create, opts("create")) -- create
-					vim.keymap.set("n", "u", api.tree.change_root_to_parent, opts("Up")) -- up
-					vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help")) -- help
+					local set = vim.keymap.set
+					set("n", "c", api.tree.change_root_to_node, opts("CD")) -- change dir
+					set("n", "N", api.fs.create, opts("create")) -- create
+					set("n", "u", api.tree.change_root_to_parent, opts("Up")) -- up
+					set("n", "?", api.tree.toggle_help, opts("Help")) -- help
 				end,
 				update_focused_file = { enable = true },
 				renderer = {

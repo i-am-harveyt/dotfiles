@@ -1,6 +1,4 @@
 local opt = vim.opt
-local api = vim.api
-
 
 opt.background = "dark"
 opt.backup = false
@@ -26,13 +24,5 @@ opt.wrap = false
 opt.writebackup = false
 opt.timeout = true
 opt.timeoutlen = 300
-
--- vim.cmd("colorscheme sorbet")
-
-vim.keymap.set("i", "<c-l>", "<ESC>")
-
--- Customization for Pmenu
--- api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
--- api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
 
 return {}

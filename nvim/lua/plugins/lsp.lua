@@ -1,3 +1,5 @@
+local set = vim.keymap.set
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -55,8 +57,8 @@ return {
 				single_file_support = false,
 			})
 
-			vim.keymap.set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "Installer Info" })
-			vim.keymap.set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "Info" })
+			set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "[L]SP [I]nstaller" })
+			set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "[L]SP [I]nfo" })
 		end,
 	},
 	{
@@ -75,6 +77,7 @@ return {
 					javascript = { "prettier" },
 					typescript = { "prettier" },
 					markdown = { "prettier" },
+					typst = { "prettypst" },
 				},
 			})
 			conform.formatters["clang-format"] = {
@@ -90,7 +93,7 @@ return {
 				command = "deno fmt",
 				require_cwd = true,
 			}
-			vim.keymap.set("n", "<Space>lf", function()
+			set("n", "<Space>lf", function()
 				conform.format({
 					async = true,
 					lsp_format = "fallback",

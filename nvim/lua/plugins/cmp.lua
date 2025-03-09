@@ -8,26 +8,26 @@ return {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "mono",
 			},
-			cmdline = {
-				keymap = {
-					preset = "default",
-					["<CR>"] = { "accept_and_enter", "fallback" },
-				},
-			},
 			keymap = {
 				preset = "default",
-				["<CR>"] = { "accept", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
+
 				["<Tab>"] = { "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+				["<C-p>"] = { "show_and_insert", "select_prev", "fallback" },
+				["<C-n>"] = { "show_and_insert", "select_next", "fallback" },
+
 				["<C-j>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+
 				["<C-u>"] = { "scroll_documentation_up", "fallback" },
 				["<C-d>"] = { "scroll_documentation_down", "fallback" },
 			},
 			signature = { enabled = true },
 			sources = {
 				-- add lazydev to your completion providers
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
