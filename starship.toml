@@ -1,15 +1,8 @@
 format = """\
 [$username](fg:red)\
 [$directory](fg:cyan)\
-[$git_branch$git_status](fg:green)\
-[$nodejs$python$golang](fg:white)
-$character
-"""
-
-right_format = """\
-$cmd_duration\
-$battery\
-$time\
+[$git_branch$git_status](fg:green)$battery
+$time(fg:white)$character
 """
 
 # Left Prompt
@@ -19,52 +12,31 @@ $time\
 
 [directory]
 truncation_length = 3
-truncation_symbol = ".../"
-format = ' $path$read_only '
+truncation_symbol = "…"
+format = '$path$read_only'
 
 [git_branch]
-symbol = " "
-format = ' $symbol$branch(:$remote_branch) '
+symbol = ""
+format = ' $symbol $branch(:$remote_branch)'
 
 [git_status]
 deleted = "X"
-format = ' \[$all_status$ahead_behind\] '
-
-[nodejs]
-format = " $symbol($version) "
-
-[python]
-format = " ${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\)) "
-detect_files = [
-	"requirements.txt",
-	".python-version",
-	"pyproject.toml",
-	"Pipfile",
-	"tox.ini",
-	"setup.py",
-	"__init__.py",
-]
-
-[golang]
-format = "$symbol($version )"
+format = '\[$all_status$ahead_behind\]'
 
 [character]
-success_symbol = "[  ](fg:green)[](fg:green)"
-error_symbol = "[  ](fg:red)[](fg:red)"
+success_symbol = "[ ](fg:green)"
+error_symbol = "[ ](fg:red)"
+
 
 # Right Prompt
 [time]
 disabled = false
-format = '[ $time](fg:cyan)'
+format = '[$time](fg:white)'
 
 [battery]
 full_symbol = '󰁹'
 charging_symbol = '󰂄'
 discharging_symbol = '󱟤'
-format = '[$symbol $percentage](fg:yellow)'
+format = '[ $symbol$percentage](fg:yellow)'
 [[battery.display]]
 threshold = 100
-
-[cmd_duration]
-min_time = 1000
-format = '[~$duration~ ](fg:#FFFFFF)'
