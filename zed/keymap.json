@@ -1,0 +1,44 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // project
+      "space e": "project_panel::ToggleFocus",
+
+      // buffer
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+      "space b d": "pane::CloseActiveItem",
+
+      // file
+      "space f s": "workspace::Save",
+      "space f S": "workspace::SaveAs",
+      "space f r": "workspace::Reload",
+
+      // lsp
+      "space l f": "editor::Format",
+      "space l r": "editor::Rename",
+
+      // code
+      "space c r": "editor::Rename",
+      "space c R": "editor::FindAllReferences",
+      "space c j": "editor::GoToDiagnostic",
+      "space c k": "editor::GoToPreviousDiagnostic",
+      "space h": "editor::Hover"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-l": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "VimControl || ProjectPanel",
+    "bindings": {
+      "space b b": "tab_switcher::Toggle",
+      "space space": "file_finder::Toggle",
+      "space e": "workspace::ToggleRightDock"
+    }
+  }
+]
