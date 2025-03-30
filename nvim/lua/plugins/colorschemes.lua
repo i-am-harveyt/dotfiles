@@ -9,7 +9,7 @@ return {
 					light = "lotus", -- vim.o.background = "light"
 				},
 			})
-			-- vim.cmd([[colorscheme kanagawa-wave]])
+			vim.cmd([[colorscheme kanagawa-wave]])
 		end,
 	},
 	{
@@ -29,7 +29,7 @@ return {
 			gruvbox.setup({
 				transparent_mode = true,
 			})
-			vim.cmd([[colorscheme gruvbox]])
+			-- vim.cmd([[colorscheme gruvbox]])
 		end,
 	},
 }

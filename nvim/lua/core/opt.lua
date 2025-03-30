@@ -24,5 +24,6 @@ opt.wrap = false
 opt.writebackup = false
 opt.timeout = true
 opt.timeoutlen = 300
+-- opt.winborder = "rounded"
 
 return {}

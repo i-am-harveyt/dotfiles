@@ -15,9 +15,10 @@ return {
 				sort = { "alphanum", "case" },
 				win = {
 					wo = {
-						winblend = 10
-					}
-				}
+						winblend = 10,
+					},
+					border = "none",
+				},
 			}
 			wk.setup(opts)
 			wk.add({

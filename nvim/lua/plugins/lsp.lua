@@ -3,59 +3,8 @@ local set = vim.keymap.set
 return {
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"neovim/nvim-lspconfig",
-			"saghen/blink.cmp",
-		},
 		config = function()
 			require("mason").setup()
-			local lsp_config = require("lspconfig")
-
-			-- blink-cmp
-			local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
-
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					lsp_config[server_name].setup({ capabilities = blink_capabilities })
-				end,
-			})
-
-			-- for lua ls
-			lsp_config.lua_ls.setup({
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			})
-
-			-- for pyright
-			lsp_config.pyright.setup({
-				settings = {
-					pyright = {
-						-- Using Ruff's import organizer
-						disableOrganizeImports = true,
-					},
-					python = {
-						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
-							ignore = { "*" },
-						},
-					},
-				},
-			})
-
-			-- for deno
-			lsp_config.denols.setup({
-				root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
-			})
-			lsp_config.ts_ls.setup({
-				root_dir = lsp_config.util.root_pattern("package.json"),
-				single_file_support = false,
-			})
 
 			set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "[L]SP [I]nstaller" })
 			set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "[L]SP [I]nfo" })
