@@ -9,6 +9,7 @@ return {
 			require("lspsaga").setup({ ui = { code_action = "" } })
 			set("n", "<Space>ca", "<Cmd>Lspsaga code_action<CR>", { desc = "[C]ode [A]ction" })
 			set("n", "<Space>cd", "<Cmd>Lspsaga peek_definition<CR>", { desc = "[C]ode [D]efinition" })
+			set("n", "<Space>h", "<Cmd>Lspsaga hover_doc<CR>", { desc = "[C]ode [H]over" }) -- override <space>h
 			set("n", "<Space>ch", "<Cmd>Lspsaga hover_doc<CR>", { desc = "[C]ode [H]over" })
 			set("n", "<Space>ci", "<Cmd>Lspsaga finder imp<CR>", { desc = "[C]ode [I]mplementation" })
 			set("n", "<Space>cj", "<Cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "[C]ode [N]ext Diagnostics" })

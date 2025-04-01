@@ -3,8 +3,31 @@ local set = vim.keymap.set
 return {
 	{
 		"williamboman/mason.nvim",
+		dependencies = "neovim/nvim-lspconfig",
 		config = function()
-			require("mason").setup()
+			local mason = require("mason")
+			mason.setup()
+
+			local nvim_lsp = require("lspconfig")
+			local lsp_servers = {
+				"gopls",
+				"lua_ls",
+				"vtsls",
+				"zls",
+				"pyright",
+				"denols",
+			}
+			for _, server in pairs(lsp_servers) do
+				nvim_lsp[server].setup({})
+			end
+
+			nvim_lsp.denols.setup({
+				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+			nvim_lsp.vtsls.setup({
+				root_dir = nvim_lsp.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
 
 			set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "[L]SP [I]nstaller" })
 			set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "[L]SP [I]nfo" })
