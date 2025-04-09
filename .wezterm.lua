@@ -6,7 +6,7 @@ local font = {
 	-- font_family = "DepartureMono Nerd Font Propo",
 	-- font_family = "FantasqueSansM Nerd Font Propo",
 	font_family = "ComicShannsMono Nerd Font Propo",
-	font_size = 22,
+	font_size = 20,
 }
 
 config = {
@@ -14,19 +14,31 @@ config = {
 	-- font
 	font = wezterm.font({
 		family = font.font_family,
-		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+		harfbuzz_features = {
+			"calt=0",
+			"clig=0",
+			"liga=0",
+		},
 	}),
 	font_size = font.font_size,
 	font_rules = {
 		{
 			intensity = "Bold",
 			italic = false,
-			font = wezterm.font(font.font_family, { weight = "Bold", stretch = "Normal", style = "Normal" }),
+			font = wezterm.font(font.font_family, {
+				weight = "Bold",
+				stretch = "Normal",
+				style = "Normal",
+			}),
 		},
 		{
 			intensity = "Bold",
 			italic = true,
-			font = wezterm.font(font.font_family, { weight = "Bold", stretch = "Normal", style = "Italic" }),
+			font = wezterm.font(font.font_family, {
+				weight = "Bold",
+				stretch = "Normal",
+				style = "Italic",
+			}),
 		},
 	},
 
@@ -41,9 +53,9 @@ config = {
 	max_fps = 120,
 
 	-- color_scheme options
-	-- color_scheme = "Tokyo Night Storm",
+	color_scheme = "Tokyo Night Storm",
 	-- color_scheme = "Gruvbox dark, hard (base16)"
-	color_scheme = "Kanagawa (Gogh)",
+	-- color_scheme = "Kanagawa (Gogh)",
 }
 
 return config

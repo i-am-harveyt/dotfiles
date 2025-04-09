@@ -10,6 +10,9 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/go/
 export PATH=$PATH:/usr/local/Golang/bin
 
+# Neovim Mason Setup
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
+
 # For llvm setup
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 
@@ -70,17 +73,8 @@ _comp_options+=(globdots)
 bindkey -v
 export KEYTIMEOUT=1
 
-########## Alias ##########
-alias nv="nvim"
-alias vs="codium"
-alias calendar="open https://calendar.google.com/"
-alias line="open -a Line"
-alias ls="eza"
-alias ll="eza -l"
-alias la="eza -a"
-alias lla="eza -la"
-alias lt="eza -T"
-alias ghostty_config='nvim /Users/tonghaoting/Library/Application\ Support/com.mitchellh.ghostty/config'
+# alias
+source /Users/tonghaoting/.zsh_alias
 
 ########## plugins ##########
 eval "$(starship init zsh)"
@@ -112,3 +106,9 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # for zig
 export PATH="$HOME/zig/0.14.0/files/:$PATH"
 
+# for ngrok
+if command -v ngrok &>/dev/null; then
+eval "$(ngrok completion)"
+fi
+
+exec fish
