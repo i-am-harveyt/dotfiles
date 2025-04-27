@@ -15,6 +15,8 @@ export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 
 # For llvm setup
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # pyenv-virtualenv
 export PATH="$HOME/.pyenv/bin:$PATH"
@@ -106,9 +108,13 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # for zig
 export PATH="$HOME/zig/0.14.0/files/:$PATH"
 
+# for rustup
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+
 # for ngrok
 if command -v ngrok &>/dev/null; then
 eval "$(ngrok completion)"
 fi
 
 exec fish
+# exec nu
