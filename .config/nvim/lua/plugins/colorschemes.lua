@@ -18,7 +18,7 @@ return {
 		priority = 1000,
 		opts = {},
 		config = function()
-			vim.cmd([[colorscheme tokyonight-storm]])
+			-- vim.cmd([[colorscheme tokyonight-storm]])
 		end,
 	},
 	{
@@ -30,6 +30,13 @@ return {
 				transparent_mode = true,
 			})
 			-- vim.cmd([[colorscheme gruvbox]])
+		end,
+	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 }

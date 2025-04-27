@@ -136,4 +136,16 @@ return {
 		version = "1.*",
 		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		opts = {
+			render_modes = { "n", "c", "t" },
+		},
+		config = function()
+			require("render-markdown").setup({
+				completions = { lsp = { enabled = true } },
+			})
+		end,
+	},
 }

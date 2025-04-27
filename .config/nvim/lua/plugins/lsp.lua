@@ -3,25 +3,19 @@ local set = vim.keymap.set
 return {
 	{
 		"williamboman/mason.nvim",
-		dependencies = "neovim/nvim-lspconfig",
+		dependencies = { "neovim/nvim-lspconfig", "williamboman/mason-lspconfig.nvim" },
 		config = function()
 			local mason = require("mason")
-			mason.setup()
-
+			local mason_lspconfig = require("mason-lspconfig")
 			local nvim_lsp = require("lspconfig")
-			local lsp_servers = {
-				"gopls",
-				"lua_ls",
-				"vtsls",
-				"zls",
-				"pyright",
-				"denols",
-				"clangd",
-				"marksman",
-			}
-			for _, server in pairs(lsp_servers) do
-				nvim_lsp[server].setup({})
-			end
+
+			mason.setup()
+			mason_lspconfig.setup()
+			mason_lspconfig.setup_handlers({
+				function(server_name) -- default handler (optional)
+					nvim_lsp[server_name].setup({})
+				end,
+			})
 
 			nvim_lsp.marksman.setup({
 				filetypes = { "markdown", "markdown.mdx" },
@@ -29,6 +23,7 @@ return {
 			})
 			nvim_lsp.denols.setup({
 				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+				single_file_support = false,
 			})
 			nvim_lsp.vtsls.setup({
 				root_dir = nvim_lsp.util.root_pattern("package.json"),

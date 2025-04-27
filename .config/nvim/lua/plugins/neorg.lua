@@ -21,14 +21,15 @@ return {
 						config = {
 							workspaces = {
 								notes = "~/neorg/notes",
+								thesis = "~/neorg/thesis",
 							},
 						},
 					},
 					["core.export"] = {},
 					["core.presenter"] = {
 						config = {
-							zen_mode = "zen-mode"
-						}
+							zen_mode = "zen-mode",
+						},
 					},
 				},
 			})
