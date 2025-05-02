@@ -39,4 +39,10 @@ return {
 			vim.cmd("colorscheme rose-pine")
 		end,
 	},
+	{
+		"dundargoc/fakedonalds.nvim",
+		config = function()
+			-- vim.cmd([[colorscheme fakedonalds]])
+		end,
+	},
 }

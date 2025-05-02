@@ -26,4 +26,6 @@ opt.timeout = true
 opt.timeoutlen = 300
 opt.winborder = "double"
 
+vim.cmd[[colorscheme "unokai"]]
+
 return {}
