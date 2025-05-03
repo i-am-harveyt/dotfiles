@@ -18,16 +18,22 @@ set -g fish_key_bindings fish_hybrid_key_bindings
 fzf --fish | source
 
 # yazi
-function yy
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		builtin cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
-end
+# function yy
+# 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+# 	yazi $argv --cwd-file="$tmp"
+# 	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+# 		builtin cd -- "$cwd"
+# 	end
+# 	rm -f -- "$tmp"
+# end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# starship
+starship init fish | source
+
+
+function fish_greeting
+end
