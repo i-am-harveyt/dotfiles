@@ -11,11 +11,6 @@ return {
 
 			mason.setup()
 			mason_lspconfig.setup()
-			mason_lspconfig.setup_handlers({
-				function(server_name) -- default handler (optional)
-					nvim_lsp[server_name].setup({})
-				end,
-			})
 
 			nvim_lsp.marksman.setup({
 				filetypes = { "markdown", "markdown.mdx" },
@@ -32,6 +27,7 @@ return {
 
 			set("n", "<Space>lI", "<CMD>Mason<CR>", { desc = "[L]SP [I]nstaller" })
 			set("n", "<Space>li", "<CMD>LspInfo<CR>", { desc = "[L]SP [I]nfo" })
+			set("n", "<Space>ll", "<CMD>LspLog<CR>", { desc = "[L]SP [L]og" })
 		end,
 	},
 	{

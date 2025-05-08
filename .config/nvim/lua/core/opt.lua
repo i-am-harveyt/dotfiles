@@ -24,7 +24,7 @@ opt.wrap = false
 opt.writebackup = false
 opt.timeout = true
 opt.timeoutlen = 300
-opt.winborder = "double"
+opt.winborder = "rounded"
 
 vim.cmd[[colorscheme "unokai"]]
 
