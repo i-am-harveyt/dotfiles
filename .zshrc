@@ -19,12 +19,12 @@ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # pyenv-virtualenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # set python3 -> python
-eval "$(pyenv init --path)"
+# eval "$(pyenv init --path)"
 
 # for java setup
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -76,12 +76,12 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # alias
-source /Users/tonghaoting/.zsh_alias
+source $HOME/.zsh_alias
 
 ########## plugins ##########
 eval "$(starship init zsh)"
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # pnpm
 export PNPM_HOME="/$HOME/Library/pnpm"
@@ -95,8 +95,8 @@ esac
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="/$HOME/.zsh/completions:$FPATH"; fi
-. "/$HOME/.deno/env"
+# if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="/$HOME/.zsh/completions:$FPATH"; fi
+# . "/$HOME/.deno/env"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -106,7 +106,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # for zig
-export PATH="$HOME/zig/0.14.0/files/:$PATH"
+export PATH="$HOME/:$PATH"
 
 # for rustup
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
@@ -115,6 +115,11 @@ export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 if command -v ngrok &>/dev/null; then
 eval "$(ngrok completion)"
 fi
+
+export INPUT_METHOD=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 exec fish
 # exec nu
