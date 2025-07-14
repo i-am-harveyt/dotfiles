@@ -1,7 +1,4 @@
 ########## PATH ##########
-# homebrew
-export PATH=$PATH:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/opt/homebrew/
-
 # Neovim Mason Setup
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 
@@ -9,9 +6,6 @@ export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-# for wezterm
-export PATH=$PATH:/Applications/WezTerm.app/Contents/MacOS
 
 # for yazi
 function yy() {
@@ -44,8 +38,6 @@ export KEYTIMEOUT=1
 
 # alias
 source $HOME/.zsh_alias
-
-# functions
 source $HOME/.zsh_functions
 
 ########## plugins ##########
@@ -54,9 +46,7 @@ eval "$(starship init zsh)"
 # for mise
 eval "$(mise activate zsh)"
 
-# for jpmk
-eval "$(~/Programming/Rust/jpmk/target/release/jpmk init zsh)"
-export PATH="$PATH:/$HOME/Programming/Rust/jpmk/target/release"
-
-# exec fish
-
+export INPUT_METHOD=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
