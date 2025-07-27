@@ -29,7 +29,7 @@ return {
 					{ "<Space>w", group = "window" },
 					{ "<Space>ws", group = "split" },
 					{ "<Space>l", group = "LSP" },
-					{ "<Space>O", "<CMD>Oil<CR>", desc = "Oil" }, -- not pretty sure where is better to put this
+					{ "<Space>E", "<CMD>Fyler<CR>", desc = "Fyler" }, -- not pretty sure where is better to put this
 				},
 			})
 		end,

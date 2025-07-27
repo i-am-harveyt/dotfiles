@@ -3,11 +3,6 @@ local set = vim.keymap.set
 return {
 	"lewis6991/gitsigns.nvim",
 	{
-		"stevearc/oil.nvim",
-		opts = {},
-		dependencies = { { "echasnovski/mini.icons" } },
-	},
-	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
@@ -63,5 +58,10 @@ return {
 				Snacks.picker.lsp_implementations()
 			end, { desc = "[F]ind [I]mpl" })
 		end,
+	},
+	{
+		"A7Lavinraj/fyler.nvim",
+		dependencies = { "echasnovski/mini.icons" },
+		opts = {},
 	},
 }

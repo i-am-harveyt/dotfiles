@@ -29,14 +29,24 @@ return {
 			gruvbox.setup({
 				transparent_mode = true,
 			})
-			vim.cmd([[colorscheme gruvbox]])
+			-- vim.cmd([[colorscheme gruvbox]])
 		end,
 	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			-- vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme rose-pine-moon")
+		end,
+	},
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			-- NOTE: you do not need to call setup if you don't want to.
+			require("vague").setup({
+				-- optional configuration here
+			})
+			-- vim.cmd([[colorscheme vague]])
 		end,
 	},
 	{

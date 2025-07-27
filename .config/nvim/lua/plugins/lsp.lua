@@ -10,7 +10,11 @@ return {
 			local nvim_lsp = require("lspconfig")
 
 			mason.setup()
-			mason_lspconfig.setup()
+			mason_lspconfig.setup({
+				automatic_enable = {
+					exclude = { "denols", "vtsls" },
+				},
+			})
 
 			nvim_lsp.marksman.setup({
 				filetypes = { "markdown", "markdown.mdx" },
@@ -79,6 +83,7 @@ return {
 				python = { "ruff" },
 				go = { "golangcilint" },
 			}
+
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()
 					lint.try_lint()

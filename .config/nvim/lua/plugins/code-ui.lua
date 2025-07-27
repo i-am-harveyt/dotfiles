@@ -37,7 +37,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				build = "TSUpdate",
-				ensure_installed = { "lua" },
+				ensure_installed = { "lua", "markdown" },
 				ignore_install = { "org" },
 				sync_install = false,
 				auto_install = false,
