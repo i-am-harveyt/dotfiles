@@ -72,6 +72,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/lazydev.nvim", name = "lazydev" },
 	{ src = "https://github.com/kevinhwang91/promise-async", name = "async" }, --dp: nvim-ufo
 	{ src = "https://github.com/kevinhwang91/nvim-ufo", name = "nvim-ufo" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns" }, -- git signs
 })
 local miniclue = require("mini.clue")
 miniclue.setup({
@@ -92,6 +93,10 @@ miniclue.setup({
 		{ mode = "n", keys = "`" },
 		{ mode = "x", keys = "'" },
 		{ mode = "x", keys = "`" },
+
+		-- Movement
+		{ mode = "n", keys = "[" },
+		{ mode = "n", keys = "]" },
 
 		-- Registers
 		{ mode = "n", keys = '"' },
@@ -123,6 +128,26 @@ require("mini.files").setup()
 keymap_set("<Space>e", ":lua MiniFiles.open()<CR>", "[E]xplorer")
 require("mini.pick").setup()
 require("mini.pairs").setup()
+
+-- gitsigns
+require("gitsigns").setup({})
+local gitsigns = require("gitsigns")
+keymap_set("<Space>gb", gitsigns.toggle_current_line_blame, "[G]it [B]lame")
+keymap_set("<Space>gn", function()
+	if vim.wo.diff then
+		vim.cmd.normal({ "<Space>gn", bang = true })
+	else
+		gitsigns.nav_hunk("next")
+	end
+end, "[N]ext Change")
+
+keymap_set("<Space>gp", function()
+	if vim.wo.diff then
+		vim.cmd.normal({ "<Space>gp", bang = true })
+	else
+		gitsigns.nav_hunk("prev")
+	end
+end, "[P]revious Change")
 
 -- colorscheme
 vim.cmd([[colorscheme rose-pine-moon]])
