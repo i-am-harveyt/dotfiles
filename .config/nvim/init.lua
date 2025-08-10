@@ -1,9 +1,9 @@
-local opt = vim.o
 local keymap_set = function(lhs, rhs, desc, mode)
 	mode = mode or "n"
 	vim.keymap.set(mode, lhs, rhs, { desc = desc })
 end
 
+local opt = vim.o
 -- opt.nu = true
 -- opt.rnu = true
 opt.swapfile = false
@@ -11,69 +11,74 @@ opt.winborder = "rounded"
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
 opt.tabstop = 4
+opt.shiftwidth = 4
 opt.signcolumn = "yes:1"
 opt.writebackup = false
 opt.timeoutlen = 50
 opt.updatetime = 50
 opt.termguicolors = true
+opt.linebreak = false
+opt.wrap = false
 vim.g.mapleader = " "
-keymap_set("<leader>fs", ":w<CR>", "[F]ile [S]ave")
-keymap_set("<leader>q", ":q<CR>", "[Q]uit")
-keymap_set("<leader>Q", ":q<CR>", "[Q]uit")
-keymap_set("<leader>Fw", ":Pick grep_live<CR>", "[F]ile [W]ord")
-keymap_set("<leader>Ff", ":Pick files<CR>", "[F]ind [F]iles")
-keymap_set("<leader>Fb", ":Pick buffers<CR>", "[F]ind [B]uffers")
 
--- basic
-keymap_set("<esc>", ":nohlsearch<CR>", "nohl")
-keymap_set("<Space>Q", ":q!<CR>", "Force [Q]uit")
-keymap_set("<C-l>", "<ESC>", "Esc", "i")
+local keymap_basic_setup = function()
+	keymap_set("<leader>fs", ":w<CR>", "[F]ile [S]ave")
+	keymap_set("<leader>q", ":q<CR>", "[Q]uit")
+	keymap_set("<leader>Q", ":q<CR>", "[Q]uit")
 
--- buffer
-keymap_set("<Space>bd", ":bd<CR>", "[B]uffer [D]elete")
-keymap_set("<Space>bn", ":bn<CR>", "[B]uffer [N]ext")
-keymap_set("<Space>bp", ":bp<CR>", "[B]uffer [P]revious")
+	-- basic
+	keymap_set("<esc>", ":nohlsearch<CR>", "nohl")
+	keymap_set("<Space>Q", ":q!<CR>", "Force [Q]uit")
+	keymap_set("<C-l>", "<ESC>", "Esc", "i")
 
--- file
-keymap_set("<Space>fs", ":w<CR>", "[F]ile [S]ave")
+	-- buffer
+	keymap_set("<Space>bd", ":bd<CR>", "[B]uffer [D]elete")
+	keymap_set("<Space>bn", ":bn<CR>", "[B]uffer [N]ext")
+	keymap_set("<Space>bp", ":bp<CR>", "[B]uffer [P]revious")
 
---window
-keymap_set("<Space>wh", "<C-w>h", "Left Window")
-keymap_set("<Space>wj", "<C-w>j", "Down Window")
-keymap_set("<Space>wk", "<C-w>k", "Up Window")
-keymap_set("<Space>wl", "<C-w>l", "Right Window")
-keymap_set("<Space>wq", "<C-w>q", "[W]indow [Q]uit")
-keymap_set("<Space>wsh", "<C-w>s", "[W]indow [S]plit [H]orizontally")
-keymap_set("<Space>wsv", "<C-w>v", "[W]indow [S]plit [V]ertically")
+	-- file
+	keymap_set("<Space>fs", ":w<CR>", "[F]ile [S]ave")
 
--- lsp
-keymap_set("K", ":lua vim.lsp.buf.hover()<CR>", "[H]over")
-keymap_set("<Space>h", ":lua vim.lsp.buf.hover()<CR>", "[H]over")
-keymap_set("<Space>la", ":lua vim.lsp.buf.code_action()<CR>", "[L]SP [A]ction")
-keymap_set("<Space>ld", ":lua vim.lsp.buf.definition()<CR>", "[L]SP [D]efinition")
-keymap_set("<Space>lh", ":lua vim.lsp.buf.hover()<CR>", "[L]SP [H]over")
-keymap_set("<Space>lj", ":lua vim.lsp.diagnostic.goto_next()<CR>", "[L]SP Next Diagnostic")
-keymap_set("<Space>lk", ":lua vim.lsp.diagnostic.goto_prev()<CR>", "[L]SP Prev Diagnostic")
-keymap_set("<Space>lr", ":lua vim.lsp.buf.rename()<CR>", "[L]SP [R]ename")
+	--window
+	keymap_set("<Space>wh", "<C-w>h", "Left Window")
+	keymap_set("<Space>wj", "<C-w>j", "Down Window")
+	keymap_set("<Space>wk", "<C-w>k", "Up Window")
+	keymap_set("<Space>wl", "<C-w>l", "Right Window")
+	keymap_set("<Space>wq", "<C-w>q", "[W]indow [Q]uit")
+	keymap_set("<Space>wsh", "<C-w>s", "[W]indow [S]plit [H]orizontally")
+	keymap_set("<Space>wsv", "<C-w>v", "[W]indow [S]plit [V]ertically")
+
+	-- lsp
+	keymap_set("K", ":lua vim.lsp.buf.hover()<CR>", "[H]over")
+	keymap_set("<Space>h", ":lua vim.lsp.buf.hover()<CR>", "[H]over")
+	keymap_set("<Space>la", ":lua vim.lsp.buf.code_action()<CR>", "[L]SP [A]ction")
+	keymap_set("<Space>ld", ":lua vim.lsp.buf.definition()<CR>", "[L]SP [D]efinition")
+	keymap_set("<Space>lh", ":lua vim.lsp.buf.hover()<CR>", "[L]SP [H]over")
+	keymap_set("<Space>lj", ":lua vim.lsp.diagnostic.goto_next()<CR>", "[L]SP Next Diagnostic")
+	keymap_set("<Space>lk", ":lua vim.lsp.diagnostic.goto_prev()<CR>", "[L]SP Prev Diagnostic")
+	keymap_set("<Space>lr", ":lua vim.lsp.buf.rename()<CR>", "[L]SP [R]ename")
+end
+keymap_basic_setup()
 
 -- package manager
 vim.pack.add({
+	{ src = "https://github.com/windwp/nvim-autopairs", name = "autopairs" },
 	{ src = "https://github.com/echasnovski/mini.clue.git", name = "mini.clue" },
 	{ src = "https://github.com/echasnovski/mini.files.git", name = "mini.files" },
 	{ src = "https://github.com/echasnovski/mini.pick.git", name = "mini.pick" },
-	{ src = "https://github.com/echasnovski/mini.pairs.git", name = "mini.pairs" },
 	{ src = "https://github.com/williamboman/mason.nvim.git", name = "mason.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig.git", name = "nvim-lspconfig" },
 	{ src = "https://github.com/williamboman/mason-lspconfig.nvim.git", name = "mason-lspconfig.nvim" },
 	{ src = "https://github.com/rose-pine/neovim.git", name = "rose-pine" },
+	{ src = "https://github.com/folke/tokyonight.nvim.git", name = "tokyonight" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter.git", name = "nvim-treesitter" },
 	{ src = "https://github.com/glepnir/lspsaga.nvim.git", name = "lsp-saga" },
 	{ src = "https://github.com/stevearc/conform.nvim", name = "conform-nvim" },
-	{ src = "https://github.com/folke/lazydev.nvim", name = "lazydev" },
 	{ src = "https://github.com/kevinhwang91/promise-async", name = "async" }, --dp: nvim-ufo
 	{ src = "https://github.com/kevinhwang91/nvim-ufo", name = "nvim-ufo" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns" }, -- git signs
 })
+require("nvim-autopairs").setup()
 local miniclue = require("mini.clue")
 miniclue.setup({
 	triggers = {
@@ -127,7 +132,9 @@ miniclue.setup({
 require("mini.files").setup()
 keymap_set("<Space>e", ":lua MiniFiles.open()<CR>", "[E]xplorer")
 require("mini.pick").setup()
-require("mini.pairs").setup()
+keymap_set("<leader>Fw", ":Pick grep_live<CR>", "[F]ile [W]ord")
+keymap_set("<leader>Ff", ":Pick files<CR>", "[F]ind [F]iles")
+keymap_set("<leader>Fb", ":Pick buffers<CR>", "[F]ind [B]uffers")
 
 -- gitsigns
 require("gitsigns").setup({})
@@ -150,9 +157,11 @@ keymap_set("<Space>gp", function()
 end, "[P]revious Change")
 
 -- colorscheme
-vim.cmd([[colorscheme rose-pine-moon]])
+-- vim.cmd([[colorscheme rose-pine-moon]])
+vim.cmd([[colorscheme tokyonight-storm]])
 
 -- treesitter
+---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
 	build = "TSUpdate",
 	ensure_installed = { "lua", "markdown" },
@@ -178,12 +187,20 @@ vim.cmd([[set completeopt=menu,menuone,noinsert,noselect,fuzzy,popup]])
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client == nil then
+			error("LSP: client load failed")
+			return
+		end
 		if client:supports_method("textDocument/completion") then
 			-- trigger on every keypress
 			local chars = {}
-			for i = 32, 126 do
+			for i = 65, 90 do
 				table.insert(chars, string.char(i))
 			end
+			for i = 97, 122 do
+				table.insert(chars, string.char(i))
+			end
+			table.insert(chars, ".")
 			client.server_capabilities.completionProvider.triggerCharacters = chars
 
 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
@@ -205,6 +222,16 @@ require("mason-lspconfig").setup({
 	},
 })
 local nvim_lsp = require("lspconfig")
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+		},
+	},
+})
 
 nvim_lsp.marksman.setup({
 	filetypes = { "markdown", "markdown.mdx" },
