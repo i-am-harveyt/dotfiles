@@ -12,7 +12,7 @@ $time(fg:white)$character
 
 [directory]
 truncation_length = 3
-truncation_symbol = "…"
+truncation_symbol = "… "
 format = '$path$read_only'
 
 [git_branch]
@@ -37,6 +37,6 @@ format = '[$time](fg:white)'
 full_symbol = '󰁹'
 charging_symbol = '󰂄'
 discharging_symbol = '󱟤'
-format = '[ $symbol$percentage](fg:yellow)'
+format = '[ $symbol $percentage](fg:yellow)'
 [[battery.display]]
 threshold = 100
