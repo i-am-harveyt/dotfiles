@@ -77,6 +77,10 @@ vim.pack.add({
 	{ src = "https://github.com/kevinhwang91/promise-async", name = "async" }, --dp: nvim-ufo
 	{ src = "https://github.com/kevinhwang91/nvim-ufo", name = "nvim-ufo" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns" }, -- git signs
+	{ src = "https://github.com/neanias/everforest-nvim", name = "everforest" }, -- git signs
+})
+require("everforest").setup({
+	background = "hard",
 })
 require("nvim-autopairs").setup()
 local miniclue = require("mini.clue")
@@ -158,7 +162,8 @@ end, "[P]revious Change")
 
 -- colorscheme
 -- vim.cmd([[colorscheme rose-pine-moon]])
-vim.cmd([[colorscheme tokyonight-storm]])
+-- vim.cmd([[colorscheme tokyonight-storm]])
+vim.cmd([[colorscheme everforest]])
 
 -- treesitter
 ---@diagnostic disable-next-line: missing-fields
@@ -208,10 +213,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 vim.diagnostic.config({
-	virtual_lines = { current_line = true },
+	-- virtual_lines = { current_line = true },
 	underline = true,
 	severity_sort = true,
-	-- virtual_text = { current_line = true },
+	virtual_text = { current_line = true },
 })
 
 -- LSP
@@ -260,6 +265,7 @@ conform.setup({
 		lua = { "stylua" },
 		python = { "ruff" },
 		go = { "gofumpt", "goimports" },
+		ocaml = { "ocamlformat" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		markdown = { "prettier" },
