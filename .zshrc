@@ -1,14 +1,16 @@
 ########## PATH ##########
 # homebrew
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:$HOME/.local/bin:/usr/bin
-export PATH=$PATH:/opt/homebrew/
+export PATH=$PATH:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/opt/homebrew/
 
 # Golang setup
 export GOPATH=$HOME/work/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/go/
-export PATH=$PATH:/usr/local/Golang/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/go/:/usr/local/Golang/bin
+
+# Ocaml setup
+eval $(opam env)
+
+# Neovim VC (bob) setup
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
 # Neovim Mason Setup
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
@@ -80,8 +82,8 @@ source /Users/tonghaoting/.zsh_alias
 
 ########## plugins ##########
 eval "$(starship init zsh)"
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # pnpm
 export PNPM_HOME="/$HOME/Library/pnpm"
@@ -110,11 +112,7 @@ export PATH="$HOME/zig/0.14.0/files/:$PATH"
 
 # for rustup
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH="$HOME/.cargo/bin/:$PATH"
 
-# for ngrok
-if command -v ngrok &>/dev/null; then
-eval "$(ngrok completion)"
-fi
-
-exec fish
-# exec nu
+# exec fish
+exec nu
