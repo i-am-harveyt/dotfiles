@@ -23,7 +23,8 @@ brew install \
 	tmux \
 	rustup \
 	zigup \
-	go
+	go \
+	bob
 
 # Install GUI apps
 brew install --casks \
