@@ -1,0 +1,11 @@
+[tools]
+bun = "latest"
+gleam = "latest"
+go = "1.25"
+neovim = "nightly"
+node = "24"
+pnpm = "latest"
+python = "3.14"
+rust = "stable"
+zig = "0.13"
+zls = "0.13"

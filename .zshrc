@@ -17,19 +17,9 @@ export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 
 # For llvm setup
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-# pyenv-virtualenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# set python3 -> python
-eval "$(pyenv init --path)"
-
-# for java setup
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH=$PATH:/opt/homebrew/opt/llvm@19/bin
+export LDFLAGS="-L/opt/homebrew/opt/llvm@19/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm@19/include"
 
 # for wezterm
 export PATH=$PATH:/Applications/WezTerm.app/Contents/MacOS
@@ -57,7 +47,7 @@ SAVEHIST=10000
 HISTFILE=$HOME/.zsh_history
 
 # editor
-EDITOR=nvim
+export EDITOR=nvim
 
 # completion
 if type brew &>/dev/null
@@ -93,9 +83,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="/$HOME/.zsh/completions:$FPATH"; fi
 . "/$HOME/.deno/env"
@@ -104,15 +91,9 @@ if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="/$HOME/.
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# for fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
-# for zig
-export PATH="$HOME/zig/0.14.0/files/:$PATH"
+# Added by Antigravity
+export PATH="/Users/tonghaoting/.antigravity/antigravity/bin:$PATH"
 
-# for rustup
-export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-export PATH="$HOME/.cargo/bin/:$PATH"
-
-# exec fish
-exec nu
+exec fish
