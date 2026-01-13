@@ -16,24 +16,25 @@ brew install \
 	git-delta \
 	htop \
 	yazi \
-	neovim \
 	luarocks \
 	ripgrep \
-	fnm \
 	tmux \
-	rustup \
-	zigup \
-	go \
-	bob
+	mise
+
+
+# add neovim plugin to install nightly version
+mise plugins add neovim
+mise install
 
 # Install GUI apps
 brew install --casks \
+	antigravity \
 	brave-browser \
 	discord \
 	font-comic-shanns-mono-nerd-font \
 	podman-desktop \
 	raycast \
-	wezterm \
+	wezterm@nightly \
 	zed
 
 # again, get every apps works
