@@ -30,7 +30,6 @@ mise install
 brew install --casks \
 	antigravity \
 	brave-browser \
-	discord \
 	font-comic-shanns-mono-nerd-font \
 	podman-desktop \
 	raycast \

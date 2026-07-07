@@ -2,7 +2,7 @@
 source ~/.zsh_alias
 
 # theme
-fish_config theme choose "Rosé Pine"
+# fish_config theme choose "Rosé Pine"
 
 # vim keybindings
 function fish_hybrid_key_bindings --description \
@@ -31,3 +31,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+starship init fish | source
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/tonghaoting/.local/bin" $PATH

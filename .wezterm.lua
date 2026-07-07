@@ -2,24 +2,32 @@ local wezterm = require("wezterm")
 
 -- local
 local fonts = {
+	-- latin_font_family = "BlexMono Nerd Font Propo",
+	-- latin_font_family = "BigBlueTermPlus Nerd Font Propo",
 	-- latin_font_family = "ComicShannsMono Nerd Font Propo",
 	-- latin_font_family = "DepartureMono Nerd Font Propo",
+	-- latin_font_family = "D2CodingLigature Nerd Font Propo",
+	latin_font_family = "EnvyCodeR Nerd Font Propo",
 	-- latin_font_family = "FantasqueSansM Nerd Font Propo",
+	-- latin_font_family = "GoMono Nerd Font Propo",
 	-- latin_font_family = "IosevkaTerm Nerd Font Propo",
 	-- latin_font_family = "JetBrainsMono Nerd Font Propo",
-	-- latin_font_family = "GoMono Nerd Font Propo",
+	-- latin_font_family = "OpenDyslexicM Nerd Font Propo",
+	-- latin_font_family = "ProFontWindows Nerd Font Propo",
+	-- latin_font_family = "Terminess Nerd Font Propo",
 	-- latin_font_family = "UbuntuMono Nerd Font Propo",
-	latin_font_family = "ZedMono Nerd Font Propo",
-	zh_font_family = "DFKai-SB",
+	-- latin_font_family = "ZedMono Nerd Font Propo",
+	zh_font_family = "Cubic 11",
 	-- zh_font_family = "Chenyuluoyan",
-	font_size = 22,
+	-- zh_font_family = "DFKai-SB",
+	font_size = 18,
 }
 
 return {
 	font = wezterm.font_with_fallback({
 		{
 			family = fonts.latin_font_family,
-			harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+			-- harfbuzz_features = { "calt=0", "clig=q", "liga=0" },
 		},
 		{
 			family = fonts.zh_font_family,
@@ -72,7 +80,8 @@ return {
 
 	-- color_scheme options
 	-- color_scheme = "Tokyo Night Storm",
+	-- color_scheme = "Everforest Dark Hard (Gogh)",
 	-- color_scheme = "Gruvbox dark, hard (base16)"
 	-- color_scheme = "Kanagawa (Gogh)",
-	color_scheme = "rose-pine",
+	-- color_scheme = "rose-pine-moon",
 }

@@ -1,5 +1,5 @@
 alias nvim_config="cd ~/dotfiles/.config/nvim"
-alias vs="codium"
+alias vs="open -a Visual\ Studio\ Code"
 alias calendar="open https://calendar.google.com/"
 alias line="open -a Line"
 alias ls="eza"
@@ -8,4 +8,5 @@ alias la="eza -a"
 alias lla="eza -la"
 alias lt="eza -T"
 alias ghostty_config='nvim /Users/tonghaoting/Library/Application\ Support/com.mitchellh.ghostty/config'
+alias gemini='agy'
 

@@ -2,13 +2,12 @@ format = """\
 [$username](fg:red)\
 [$directory](fg:cyan)\
 [$git_branch$git_status](fg:green)$battery
-$time(fg:white)$character
-"""
+$time(fg:white)$character"""
 
 # Left Prompt
-# [username]
-# show_always = true
-# format = ' $user '
+[username]
+show_always = true
+format = '$user@ '
 
 [directory]
 truncation_length = 3
@@ -24,19 +23,17 @@ deleted = "X"
 format = '\[$all_status$ahead_behind\]'
 
 [character]
-success_symbol = "[ ](fg:green)"
-error_symbol = "[ ](fg:red)"
+success_symbol = "[ >](fg:green)"
+error_symbol = "[ X](fg:red)"
 
-
-# Right Prompt
 [time]
 disabled = false
 format = '[$time](fg:white)'
 
 [battery]
 full_symbol = '󰁹'
-charging_symbol = '󰂄'
-discharging_symbol = '󱟤'
+charging_symbol = '󰂏'
+discharging_symbol = '󰂌'
 format = '[ $symbol $percentage](fg:yellow)'
 [[battery.display]]
 threshold = 100
