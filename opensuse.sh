@@ -5,13 +5,19 @@ sudo zypper install \
 	adobe-sourcehanserif-cn-fonts adobe-sourcehanserif-tw-fonts \
 	seatd seatd-devel \
 	brave-browser \
+	kitty \
 	hyprland hyprland-devel \
 	hyprland-qtutils \
+	waybar otf-awesome dunst \
+	dolphin wofi \
 	gcc \
+	neovim \
 	git-core \
+	wezterm \
 	eza \
 	stow \
-	zsh fish
+	zsh fish \
+	fnm
 
 # get nerd fonts
 curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash

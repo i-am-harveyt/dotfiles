@@ -39,10 +39,18 @@ export KEYTIMEOUT=1
 
 # alias
 source $HOME/.zsh_alias
+<<<<<<< HEAD
 source $HOME/.zsh_functions
 
 ########## plugins ##########
 eval "$(starship init zsh)"
+=======
+
+########## plugins ##########
+eval "$(starship init zsh)"
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+>>>>>>> dd7ecb66ffc9f2e27d06686a2cf98f63a182038b
 
 eval "$(mise activate zsh)"
 
