@@ -7,6 +7,7 @@ alias ll="eza -l"
 alias la="eza -a"
 alias lla="eza -la"
 alias lt="eza -T"
+alias cdd="cd -"
 alias ghostty_config='nvim /Users/tonghaoting/Library/Application\ Support/com.mitchellh.ghostty/config'
 alias gemini='agy'
 

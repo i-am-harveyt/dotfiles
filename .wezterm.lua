@@ -4,10 +4,10 @@ local wezterm = require("wezterm")
 local fonts = {
 	-- latin_font_family = "BlexMono Nerd Font Propo",
 	-- latin_font_family = "BigBlueTermPlus Nerd Font Propo",
-	-- latin_font_family = "ComicShannsMono Nerd Font Propo",
+	latin_font_family = "ComicShannsMono Nerd Font Propo",
 	-- latin_font_family = "DepartureMono Nerd Font Propo",
 	-- latin_font_family = "D2CodingLigature Nerd Font Propo",
-	latin_font_family = "EnvyCodeR Nerd Font Propo",
+	-- latin_font_family = "EnvyCodeR Nerd Font Propo",
 	-- latin_font_family = "FantasqueSansM Nerd Font Propo",
 	-- latin_font_family = "GoMono Nerd Font Propo",
 	-- latin_font_family = "IosevkaTerm Nerd Font Propo",
@@ -17,9 +17,8 @@ local fonts = {
 	-- latin_font_family = "Terminess Nerd Font Propo",
 	-- latin_font_family = "UbuntuMono Nerd Font Propo",
 	-- latin_font_family = "ZedMono Nerd Font Propo",
-	zh_font_family = "Cubic 11",
-	-- zh_font_family = "Chenyuluoyan",
 	-- zh_font_family = "DFKai-SB",
+	-- zh_font_family = "Chenyuluoyan",
 	font_size = 18,
 }
 
@@ -27,12 +26,12 @@ return {
 	font = wezterm.font_with_fallback({
 		{
 			family = fonts.latin_font_family,
-			-- harfbuzz_features = { "calt=0", "clig=q", "liga=0" },
-		},
-		{
-			family = fonts.zh_font_family,
 			harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 		},
+		-- {
+		-- 	family = fonts.zh_font_family,
+		-- 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+		-- },
 	}),
 	font_size = fonts.font_size,
 	font_rules = {
@@ -44,10 +43,10 @@ return {
 					family = fonts.latin_font_family,
 					weight = "Bold",
 				},
-				{
-					family = fonts.zh_font_family,
-					weight = "Bold",
-				},
+				-- {
+				-- 	family = fonts.zh_font_family,
+				-- 	weight = "Bold",
+				-- },
 			}),
 		},
 		{
@@ -59,11 +58,11 @@ return {
 					weight = "Thin",
 					italic = true,
 				},
-				{
-					family = fonts.zh_font_family,
-					weight = "Thin",
-					italic = true,
-				},
+				-- {
+				-- 	family = fonts.zh_font_family,
+				-- 	weight = "Thin",
+				-- 	italic = true,
+				-- },
 			}),
 		},
 	},

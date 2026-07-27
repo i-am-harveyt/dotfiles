@@ -2,11 +2,6 @@
 # Neovim Mason Setup
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 
-# For llvm setup
-export PATH=$PATH:/opt/homebrew/opt/llvm/bin
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
 # for yazi
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -30,7 +25,13 @@ SAVEHIST=10000
 HISTFILE=$HOME/.zsh_history
 
 # editor
-EDITOR=nvim
+export EDITOR=nvim
+
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
 
 # vi keybinding
 bindkey -v
@@ -43,7 +44,6 @@ source $HOME/.zsh_functions
 ########## plugins ##########
 eval "$(starship init zsh)"
 
-# for mise
 eval "$(mise activate zsh)"
 
 export INPUT_METHOD=fcitx
